@@ -1,0 +1,35 @@
+<div class="p-grid m-5">
+  <div class="p-col-6">
+    <div *ngIf="character">
+      <p-card
+        header="{{ character.name }}"
+        subheader="Modificación: {{ character.modified }}"
+        [style]="{ width: '360px' }"
+        styleClass="ui-card-shadow"
+      >
+        <p-header>
+          <img
+            [src]="
+              character.thumbnail.path + '.' + character.thumbnail.extension
+            "
+            width="150"
+          />
+        </p-header>
+        <div></div>
+        <p-footer>
+        </p-footer>
+      </p-card>
+    </div>
+  </div>
+  <div class="p-col-6">
+    <p-listbox *ngIf="isReady"
+      [options]="lista"
+      optionLabel="name"
+      (onClick)="onClick($event.value)"
+    ></p-listbox>
+    <br>
+    <span *ngFor="let item of content" class="badge badge-primary m-1">
+      {{item.name}}
+    </span>
+  </div>
+</div>

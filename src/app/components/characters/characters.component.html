@@ -1,0 +1,47 @@
+<div class="p-grid p-justify-center m-5">
+  <div class="p-col-12">
+    <button (click)="displaySidebar = true" class="btn btn-success">
+      Mostrar Filtro
+    </button>
+    <app-sidebar
+      [display]="displaySidebar"
+      (closeChanged)="displaySidebar = $event"
+      (filtro)="recibirParametro($event)"
+    ></app-sidebar>
+  </div>
+  <p-card
+    *ngFor="let character of characters"
+    header="{{ character.name }}"
+    subheader="Modificación: {{ character.modified }}"
+    [style]="{ width: '360px' }"
+    styleClass="ui-card-shadow m-3"
+  >
+    <p-header>
+      <img
+        [src]="character.thumbnail.path + '.' + character.thumbnail.extension"
+        width="150"
+      />
+    </p-header>
+    <div></div>
+    <p-footer>
+      <button
+        (click)="verMas(character.id)"
+        pButton
+        type="button"
+        label="Ver más"
+        style="margin-right: 0.25em;"
+      ></button>
+    </p-footer>
+  </p-card>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p-paginator
+        [rows]="8"
+        [totalRecords]="total"
+        (onPageChange)="cargarResultados($event)"
+      ></p-paginator>
+    </div>
+  </div>
+</div>

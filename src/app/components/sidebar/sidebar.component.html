@@ -1,0 +1,31 @@
+<p-sidebar
+  [(visible)]="display"
+  position="right"
+  [baseZIndex]="10000"
+  (visibleChange)="closeChanged.emit($event)"
+>
+  <h1 style="font-weight: normal;">Filtros:</h1>
+
+  <p-dropdown
+    [formControl]="dropForm"
+    [options]="filtros"
+    placeholder="Selecciona un filtro"
+    optionLabel="name"
+    [showClear]="true"
+  ></p-dropdown>
+
+  <button
+    pButton
+    type="button"
+    (click)="onSubmit()"
+    label="Filtrar"
+    class="ui-button-success m-2"
+  ></button>
+  <button
+    pButton
+    type="button"
+    (click)="onReset()"
+    label="Limpiar"
+    class="ui-button-secondary m-2"
+  ></button>
+</p-sidebar>
